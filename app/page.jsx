@@ -1,7 +1,13 @@
-export default function Page() {
-	return (
-		<h1 className="text-3xl font-bold underline">
-		Hello world!
-	</h1>
-	)
+
+export const RootPage = async () => {
+
+const characters = await caller.getCharacters ({page})
+
+return (
+<section>
+	<h1>The Rick and Morty</h1>
+</section>
+)
+
+	
 }
