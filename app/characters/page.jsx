@@ -1,7 +1,9 @@
-export default function CharactersPage() {
+import React from 'react'
+
+export default function page() {
 	return (
-		<section>
-			<h1>Test</h1>
-		</section>
+		<div>
+			
+		</div>
 	)
 }

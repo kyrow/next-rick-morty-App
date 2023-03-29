@@ -1,7 +1,13 @@
+async function getCharacter(){
+	const res = await fetch ('https://rickandmortyapi.com/api/character/2')
+	return res.json()
+}
 
-export const RootPage = async () => {
+export const RootPage =  async () => {
 
-const characters = await caller.getCharacters ({page})
+	const characters = await getCharacters(page)
+
+	cons
 
 return (
 <section>

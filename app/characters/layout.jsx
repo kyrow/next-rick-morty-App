@@ -1,7 +1,7 @@
 export default function CharactersLayout({children}) {
   return (
     <section>
-Chars
+			Chars
       {children}
     </section>
   );
