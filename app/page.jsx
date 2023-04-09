@@ -1,18 +1,21 @@
-async function getCharacter(){
-	const res = await fetch ('https://rickandmortyapi.com/api/character/2')
+import { getRandomCharactersPage } from "@/src/utils/helpers/getRandomCharacterPage"
+
+async function getCharacters(){
+	const res = await fetch ('https://rickandmortyapi.com/api/character')
 	return res.json()
 }
 
-export const RootPage =  async () => {
+export default async function RootPage() {
 
-	const characters = await getCharacters(page)
-
-	cons
+	const characters = await getCharacters(getRandomCharactersPage().toString())
 
 return (
-<section>
+<>
 	<h1>The Rick and Morty</h1>
-</section>
+	{characters.results.map((character)=> (
+		<div>{character.name}</div>
+	))}
+</>
 )
 
 	
