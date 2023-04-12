@@ -1,20 +1,13 @@
-import { getRandomCharactersPage } from "@/src/utils/helpers/getRandomCharacterPage"
-
-async function getCharacters(){
-	const res = await fetch ('https://rickandmortyapi.com/api/character')
-	return res.json()
-}
+import CharacterCard from "@/src/components/characterCard/CharacterCard"
 
 export default async function RootPage() {
 
-	const characters = await getCharacters(getRandomCharactersPage().toString())
-
 return (
 <>
-	<h1>The Rick and Morty</h1>
-	{characters.results.map((character)=> (
-		<div>{character.name}</div>
-	))}
+<div className="container mx-auto py-8">
+	<h1 className="text-center text-8xl">The Rick and Morty</h1>
+</div>
+	<CharacterCard/>
 </>
 )
 
