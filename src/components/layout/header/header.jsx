@@ -6,9 +6,9 @@ import { ROUTES } from "../../../utils/constants/routes";
 
 export const Header = () => {
 	return (
-		<header className="bg-slate-200 w-full">
+		<header className="bg-white w-full">
 			
-			<div className="container flex justify-between py-4 px-3 items-center text-green-400 mx-auto">
+			<div className="container flex justify-between py-4 px-3 items-center text-black mx-auto font-semibold">
 				<Logo/>
 				<nav>
 					<ul>
