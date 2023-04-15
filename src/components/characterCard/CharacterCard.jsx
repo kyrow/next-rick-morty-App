@@ -1,40 +1,31 @@
-import React from 'react'
+"use client"
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { getRandomCharactersPage } from "@/src/utils/helpers/getRandomCharacterPage"
 import "./characterCard.css"
+import { getRandomChar } from '@/src/utils/server/getChar'
+import CharacterModal from '../layout/charModal/characterModal'
 
+export default  function RootPage() {
 
-async function getCharacters(){
-	const res = await fetch ('https://rickandmortyapi.com/api/character')
-	return res.json()
-}
+	const [char,setChar] = useState([])
+	const [isOpen,setOpen] = useState(false)
 
-async function getRandomChar() {
-	const randomId = []
-	for (let i=0; i < 6 ;i++) {
-		randomId.push(Math.floor(Math.random()*100))
-	}
-	const res = await fetch  (`https://rickandmortyapi.com/api/character/${randomId.join()}`)
-	
-	return res.json()
-	
-}
-
-
-export default async function RootPage() {
-
-	const characters = await  getRandomChar()
+	useEffect(()=>{  getRandomChar()
+	.then((data)=>setChar(data))
+	},[])
 
 	return (
 		<div className="container w-full mx-auto my-5">
 			<div className="container flex w-full flex-wrap justify-between  mx-auto">
-			{characters.map((character)=> (
+	
+
+			{char.map((character)=> (
 				<>
 	
 				<div className="w-5/12 my-5 px-2 py-2 flex rounded-lg  bg-slate-600">
 			 	 <Image src={character.image} key={character.id} alt={character.name} width={250} height={150}/> 
 					<div className=" flex flex-col justify-between px-4  ">
-						<span className="text-lg font-semibold"  key={character.id}>Name: {character.name}</span>
+						<span className="text-lg font-semibold"  key={character.id} onClick={()=>setOpen(true)}>Name: {character.name}</span>
 						<div>
 							<span className="text-lg font-semibold">Status: </span>					
 							<span>{character.status}</span>
@@ -58,8 +49,10 @@ export default async function RootPage() {
 				
 				</>
 			))}
-			</div>
 
+{isOpen && <CharacterModal/>}
+
+			</div>
 		</div>
 	)
 }
