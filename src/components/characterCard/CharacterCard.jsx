@@ -9,34 +9,40 @@ export default  function RootPage() {
 
 	const [char,setChar] = useState([])
 	const [isOpen,setOpen] = useState(false)
+	const [activeChar,setActiveChar] = useState({})
 
-	useEffect(()=>{  getRandomChar()
+	useEffect(()=>{  
+	getRandomChar()
 	.then((data)=>setChar(data))
 	},[])
+
+	const openModal =  (character)=> {
+		setActiveChar(character)
+		setOpen(true)
+		console.log(activeChar)
+	}
 
 	return (
 
 		
 		<div className="container w-full mx-auto my-5 relative">
 
-{isOpen && <CharacterModal/>}
+{isOpen && <CharacterModal value={activeChar}/>}
+
 
 			<div className="container flex w-full flex-wrap justify-between  mx-auto">
 	
-
+	
 			{char.map((character)=> (
 				<>
 
-				<div className="w-5/12 my-5 px-2 py-2 flex rounded-lg  bg-slate-600"  key={character.id} 
-					 onClick={(data)=>{
-						setOpen(true)
-					
-						console.log(data)
-						}} >
+				<div className="w-5/12 my-5 px-2 py-2 flex rounded-lg  bg-slate-600 cursor-pointer"  
+				key={character.id} 
+				onClick={(event)=>openModal(character,event)}>
 		
 			 	 <Image src={character.image} key={character.id} alt={character.name} width={250} height={150} /> 
 					<div className=" flex flex-col justify-between px-4  ">
-					 <span className="text-lg font-semibold "  key={character.id} >
+					 <span className="text-lg font-semibold "  key={character.id } > 
 						Name: {character.name}
 						</span>
 						<div>
@@ -60,12 +66,14 @@ export default  function RootPage() {
 					</div>
 	
 				</div>
-
+				
 				</>
+				
 			))}
 
 
 			</div>
+		
 		</div>
 	)
 }
