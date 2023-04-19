@@ -21,3 +21,23 @@
 		font-size: 16px;
     font-weight: 500;
 }
+
+
+	{/* <div className="container flex w-full flex-wrap justify-between  mx-auto"> */}
+.cardsAreaBlur {
+	filter: blur(8px);
+	display:flex;
+	flex-wrap: wrap;
+  z-index: 1;
+	justify-content:space-between;
+	width:100%;
+	margin:auto;
+}
+
+.cardsArea {
+	display:flex;
+	flex-wrap: wrap;
+  z-index: 1;
+	justify-content:space-between;
+	width:100%;
+	margin:auto;}

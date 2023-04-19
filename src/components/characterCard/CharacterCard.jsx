@@ -22,21 +22,24 @@ export default  function RootPage() {
 		console.log(activeChar)
 	}
 
+
+	const closeModal = () => {
+		setOpen(false)
+	}
 	return (
 
 		
-		<div className="container w-full mx-auto my-5 relative">
+		<div className="container w-full mx-auto my-5 relative ">
 
-{isOpen && <CharacterModal value={activeChar}/>}
+{isOpen && <CharacterModal value={activeChar} modalOff={closeModal}/>}
 
-
-			<div className="container flex w-full flex-wrap justify-between  mx-auto">
-	
+			<div className={isOpen == true ? 'cardsAreaBlur' : 'cardsArea'}> 
 	
 			{char.map((character)=> (
 				<>
 
-				<div className="w-5/12 my-5 px-2 py-2 flex rounded-lg  bg-slate-600 cursor-pointer"  
+				<div className="w-5/12 my-5 px-2 py-2 flex rounded-lg bg-slate-600 cursor-pointer"  
+
 				key={character.id} 
 				onClick={(event)=>openModal(character,event)}>
 		
