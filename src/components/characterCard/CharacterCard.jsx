@@ -22,12 +22,11 @@ export default  function RootPage() {
 		console.log(activeChar)
 	}
 
-
 	const closeModal = () => {
 		setOpen(false)
 	}
-	return (
 
+	return (
 		
 		<div className="container w-full mx-auto my-5 relative ">
 
